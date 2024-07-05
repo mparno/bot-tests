@@ -10,8 +10,8 @@ jobs:
     - name: parse
       run: |
       if [[ $(echo ${{ github.event.comment.body }} | awk '{print $1}') == "@aeolus" ]]; then
-          if [[ $(echo ${{ github.event.comment.body }} | awk '{print $2}') == 'please' ]]; then
-              command=$(echo ${{ github.event.comment.body }} | awk '{for (i=3; i<NF; i++) printf $i " "; print $NF}')
+          if [[ $(echo {{ github.event.comment.body }} | awk '{print $2}') == 'please' ]]; then
+              command=$(echo {{ github.event.comment.body }} | awk '{for (i=3; i<NF; i++) printf $i " "; print $NF}')
               echo "Thank you for being polite.  I can certainly \"$command\"" 
           else
               echo "Please use the magic word."
