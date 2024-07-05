@@ -9,4 +9,17 @@ jobs:
    steps:
     - name: parse
       run: |
-       echo ${{ github.event.comment.body }}
+      if [[ $(echo ${{ github.event.comment.body }} | awk '{print $1}') == "@aeolus" ]]; then
+          if [[ $(echo ${{ github.event.comment.body }} | awk '{print $2}') == 'please' ]]; then
+              command=$(echo ${{ github.event.comment.body }} | awk '{for (i=3; i<NF; i++) printf $i " "; print $NF}')
+              body="Thank you for being polite.  I can certainly \"$command\"" 
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: $body
+              })
+          else
+              echo "Please use the magic word."
+          fi
+      fi
