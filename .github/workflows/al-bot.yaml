@@ -4,7 +4,7 @@ on:
     types: [created, edited, deleted]
 jobs:
  aeolus-bot:
-   runs-on: [re-centos7]
+   runs-on: ubuntu-latest
    steps:
     - name: parse
       run: |
