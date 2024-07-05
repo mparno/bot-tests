@@ -10,4 +10,4 @@ jobs:
     - env:
       BODY: ${{ github.event.comment.body }}
     - name: parse
-      run: parse-command.sh
+      run: bash parse-command.sh
