@@ -7,5 +7,6 @@ jobs:
    runs-on: ubuntu-latest
    steps:
     - name: parse
+      if: contains(github.event.comment.body, '@aeolus')   
       run: |
        echo ${{ github.event.comment.body }}
