@@ -4,7 +4,6 @@ on:
     types: [created, edited, deleted]
 jobs:
  aeolus-bot:
-   if: contains(github.event.comment.body, '@aeolus')
    runs-on: [re-centos7]
    steps:
     - name: parse
