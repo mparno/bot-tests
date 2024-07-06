@@ -13,7 +13,7 @@ jobs:
         BODY: ${{ github.event.comment.body }}
       run: | 
         echo "COMMENT_BODY<<EOF" >> $GITHUB_ENV
-        echo "$(.github/parse-command.sh | sed 's/"/\\"/g')\" >> $GITHUB_ENV
+        echo "$(.github/parse-command.sh | sed 's/"/\\"/g')" >> $GITHUB_ENV
         echo "EOF" >> $GITHUB_ENV
     - name: Post comment
       uses: actions/github-script@v6
